@@ -8,9 +8,9 @@ const app = express();
 const port = process.env.PORT || 5050;
 // app.use(cors());
 // app.use(express.json());
-// app.use(require("./routes/routes"));
+app.use(require("./routes/routes"));
 // get driver connection
-const dbo = require("./database/conn");
+// const dbo = require("./database/conn");
 
 app.listen(port, () => {
     // perform a database connection when server starts

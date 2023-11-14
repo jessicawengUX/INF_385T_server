@@ -4,7 +4,7 @@ const session = require('express-session');
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const appRouter = express.Router();
 
-appRouter.use(session({secret: "Your secret key"}));
+// appRouter.use(session({secret: "Your secret key"}));
 
 //var session;
 
