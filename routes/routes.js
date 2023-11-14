@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require('express-session'); 
+// const session = require('express-session'); 
 
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const appRouter = express.Router();
@@ -27,23 +27,23 @@ appRouter.route("/products").get(async function (req, res) {
 });
   
 // This section will help you create a new user.
-appRouter.route("/register").post(function (req, response) {
-    let db_connect = dbo.getDb();
-    let newUser = {
-   firstName: req.body.firstName,
-   lastName: req.body.lastName,
-   email: req.body.email,
-   password: req.body.password,
-   gender: req.body.gender,
-   address: req.body.address,
- };
- req.session.user = newUser.email;
- console.log(req.session.user);
- db_connect.collection("customers").insertOne(newUser, function (err, res) {
-    if (err) throw err;
-    response.json(res);
-  });
-});
+// appRouter.route("/register").post(function (req, response) {
+//     let db_connect = dbo.getDb();
+//     let newUser = {
+//    firstName: req.body.firstName,
+//    lastName: req.body.lastName,
+//    email: req.body.email,
+//    password: req.body.password,
+//    gender: req.body.gender,
+//    address: req.body.address,
+//  };
+//  req.session.user = newUser.email;
+//  console.log(req.session.user);
+//  db_connect.collection("customers").insertOne(newUser, function (err, res) {
+//     if (err) throw err;
+//     response.json(res);
+//   });
+// });
  
 // This section will help you create a new user.
 appRouter.route("/login").post(async function (req, response) {
@@ -78,29 +78,29 @@ appRouter.route("/login").post(async function (req, response) {
         if (err) throw err;
         res.json(result);
       });
-    });
+});
 
- // This section will help you update a record by id.
- appRouter.route("/update").post(function (req, response) {
-  let db_connect = dbo.getDb();
-  var myquery = { email: req.body.email }
-  let newvalues = {
-    $set: {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
-      gender: req.body.gender,
-      address: req.body.address,
-    },
-  };
+// This section will help you update a record by id.
+// appRouter.route("/update").post(function (req, response) {
+//   let db_connect = dbo.getDb();
+//   var myquery = { email: req.body.email }
+//   let newvalues = {
+//     $set: {
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       password: req.body.password,
+//       gender: req.body.gender,
+//       address: req.body.address,
+//     },
+//   };
   
-  db_connect.collection("customers").updateOne(myquery, newvalues, function (err, res) {
-      if (err) throw err;
-      console.log("Account info updated");
-      response.json(res);
-    });
- });
+//   db_connect.collection("customers").updateOne(myquery, newvalues, function (err, res) {
+//       if (err) throw err;
+//       console.log("Account info updated");
+//       response.json(res);
+//     });
+//  });
 
 
 module.exports =  appRouter;
