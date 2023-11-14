@@ -16,6 +16,7 @@ appRouter.route('/').get(function (req, res) {
     //     res.redirect('/login');
     // }
     // res.send("Root directory");
+    res.send("It works")
 });
 
 // This section will help you get a list of all the records.
