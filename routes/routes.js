@@ -9,6 +9,7 @@ const appRouter = express.Router();
 //var session;
 
 const dbo = require("../database/conn");
+dbo.connectToServer();
   
 appRouter.route('/').get(function (req, res) {
     // if(!req.session.user){
