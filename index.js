@@ -14,7 +14,7 @@ app.use(require("./routes/routes"));
 
 app.listen(port, () => {
     // perform a database connection when server starts
-    dbo.connectToServer();
+    // dbo.connectToServer();
     console.log(`Server is running on port: ${port}`);
 });
 
