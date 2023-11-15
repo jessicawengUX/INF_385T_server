@@ -29,7 +29,7 @@ appRouter.route("/products").get(async function (req, res) {
 });
   
 // This section will help you create a new user.
-appRouter.route("/register").post(function (req, response) {
+appRouter.route("/register").post(async function (req, response) {
     let db_connect = dbo.getDb();
     let newUser = {
    firstName: req.body.firstName,
@@ -39,12 +39,9 @@ appRouter.route("/register").post(function (req, response) {
    gender: req.body.gender,
    address: req.body.address,
  };
- // req.session.user = newUser.email;
  console.log(newUser);
- db_connect.collection("customers").insertOne(newUser, function (err, res) {
-    if (err) throw err;
-    response.json(res);
-  });
+ const results = await db_connect.collection("customers").insertOne(newUser);
+ response.json(results);
 });
  
 // This section will help you create a new user.
