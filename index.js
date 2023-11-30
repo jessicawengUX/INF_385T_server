@@ -14,7 +14,7 @@ app.use(require("./routes/routes"));
 app.use(express.static(path.join(__dirname, '../client/src')));
 
 app.get('/', (req, res) => {
- res.sendFile(path.join(__dirname, '../client/src/landing.html'));
+ res.sendFile(path.join(__dirname, '../client/src/index_home.html'));
 });
 
 // get driver connection
